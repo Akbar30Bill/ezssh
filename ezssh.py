@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import os
 import sys
 import getpass
@@ -36,13 +38,22 @@ if sys.argv[1] == 'add':
 		ServerAliveInterval = 10
 	os.system(f'bash {os.getcwd()}/ezssh_add.sh {name} {user} {port} {hostname} {ServerAliveInterval}')
 	call(['ssh-copy-id', name])
-	os.system(f'cd ~/.bin/ezssh/ && git pull origin master && cp ~/.ssh/config . && git add config && git commit -m "added new server" && git push origin master && rm config && cd -')
+	os.system(f'\
+	cd ~/.bin/ezssh/ && \
+	cp ~/.ssh/config . && \
+	git pull origin HEAD && \
+	git add config && \
+	git commit -m "added new server" && \
+	git push origin HEAD && \
+	rm config && \
+	cd -')
 elif sys.argv[1] == 'list':
+	os.system(ln )
 	os.system('python3 lssv/lssv')
 elif sys.argv[1] == 'init':
 	gitrepo = input('Git remote address: ')
-	os.system(f'cd ~/.bin/ezssh/ && git init && git remote add origin {gitrepo} && git pull origin master')
+	os.system(f'cd ~/.bin/ezssh/ && git init && git remote add origin {gitrepo} && git pull origin HEAD && cd -')
 elif sys.argv[1] == 'update':
-	os.system(f'cd ~/.bin/ezssh/ && git pull origin master && cp ~/.ssh/config . && git add config && git commit -m "added new server" && git push origin master && rm config && cd -')
+	os.system(f'cd ~/.bin/ezssh/ && git pull origin HEAD && cp ~/.ssh/config . && git add config && git commit -m "added new server" && git push origin HEAD && rm config && cd -')
 else:
 	call(['ssh', sys.argv[1]])
