@@ -41,10 +41,10 @@ if sys.argv[1] == 'add':
 	os.system(f'\
 	cd ~/.bin/ezssh/syncrepo && \
 	cp ~/.ssh/config . && \
-	git pull origin HEAD && \
+	git pull origin master && \
 	git add config && \
 	git commit -m "added new server" && \
-	git push origin HEAD && \
+	git push origin master && \
 	rm config && \
 	cd -')
 elif sys.argv[1] == 'list':
@@ -52,8 +52,8 @@ elif sys.argv[1] == 'list':
 	os.system('python3 lssv/lssv')
 elif sys.argv[1] == 'init':
 	gitrepo = input('Git remote address: ')
-	os.system(f'mkdir ~/.bin/ezssh/syncrepo && cd ~/.bin/ezssh/syncrepo && git init && git remote add origin {gitrepo} && git pull origin HEAD && cd -')
+	os.system(f'mkdir ~/.bin/ezssh/syncrepo && cd ~/.bin/ezssh/syncrepo && git init && git remote add origin {gitrepo} && git pull origin master && cd -')
 elif sys.argv[1] == 'update':
-	os.system(f'cd ~/.bin/ezssh/syncrepo && git pull origin HEAD && cp ~/.ssh/config . && git add config && git commit -m "added new server" && git push origin HEAD && rm config && cd -')
+	os.system(f'cd ~/.bin/ezssh/syncrepo && git pull origin master && cp ~/.ssh/config . && git add config && git commit -m "added new server" && git push origin master && rm config && cd -')
 else:
 	call(['ssh', sys.argv[1]])
