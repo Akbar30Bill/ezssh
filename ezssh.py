@@ -52,7 +52,9 @@ elif sys.argv[1] == 'list':
 	os.system('python3 lssv/lssv')
 elif sys.argv[1] == 'init':
 	gitrepo = input('Git remote address: ')
-	os.system(f'mkdir ~/.bin/ezssh/syncrepo && \
+	os.system(f'\
+	rm -rf ~/.bin/ezssh/syncrepo && \
+	mkdir ~/.bin/ezssh/syncrepo && \
 	cd ~/.bin/ezssh/syncrepo && \
 	git init && \
 	git remote add origin {gitrepo} && \
