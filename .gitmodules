@@ -1,0 +1,3 @@
+[submodule "lssv"]
+	path = lssv
+	url = https://github.com/Akbar30Bill/lssv.git
