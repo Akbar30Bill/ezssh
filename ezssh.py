@@ -36,7 +36,7 @@ if sys.argv[1] == 'add':
 			port = 22
 		hostname = input('Server address: ')
 		ServerAliveInterval = 10
-	os.system(f'bash {os.getcwd()}/ezssh_add.sh {name} {user} {port} {hostname} {ServerAliveInterval}')
+	os.system(f'bash {os.path.dirname(os.path.realpath(__file__))}/ezssh_add.sh {name} {user} {port} {hostname} {ServerAliveInterval}')
 	call(['ssh-copy-id', name])
 	os.system(f'\
 	cd ~/.bin/ezssh/syncrepo && \
