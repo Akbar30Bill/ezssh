@@ -44,7 +44,7 @@ if sys.argv[1] == 'add':
 	git pull origin master && \
 	git add config && \
 	git commit -m "added new server" && \
-	git push origin master && \
+	git push origin master --force && \
 	rm config && \
 	cd -')
 elif sys.argv[1] == 'list':
@@ -59,10 +59,10 @@ elif sys.argv[1] == 'init':
 	cp ~/.ssh/config . && \
 	git add config && \
 	git commit -m "init" && \
-	git push origin master && \
+	git push origin master --force && \
 	rm config && \
 	cd -')
 elif sys.argv[1] == 'update':
-	os.system(f'cd ~/.bin/ezssh/syncrepo && git pull origin master && cp ~/.ssh/config . && git add config && git commit -m "added new server" && git push origin master && rm config && cd -')
+	os.system(f'cd ~/.bin/ezssh/syncrepo && git pull origin master && cp ~/.ssh/config . && git add config && git commit -m "added new server" && git push origin master --force && rm config && cd -')
 else:
 	call(['ssh', sys.argv[1]])
