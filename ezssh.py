@@ -56,6 +56,7 @@ elif sys.argv[1] == 'init':
 	cd ~/.bin/ezssh/syncrepo && \
 	git init && \
 	git remote add origin {gitrepo} && \
+	git pull origin master || true && \
 	cp ~/.ssh/config . && \
 	git add config && \
 	git commit -m "init" && \
